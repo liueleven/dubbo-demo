@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo
+       http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- 一般和应用名称一样即01-provider，会在monitor监控中心看到 -->
+    <dubbo:application name="02-provider-2"/>
+
+    <!-- 不指定注册中心 -->
+    <dubbo:registry address="N/A"/>
+
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="cn.eleven.service.SomeService" ref="demoService"/>
+
+    <!-- 服务提供者 -->
+    <bean id="demoService" class="cn.eleven.service.impl.SomeServiceImpl"/>
+</beans>
