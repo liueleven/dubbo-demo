@@ -1,6 +1,7 @@
-package cn.eleven.dubbo;
+package cn.eleven.provider;
 
 
+import cn.eleven.api.SomeService;
 
 public class SomeServiceImpl implements SomeService {
     @Override

@@ -11,9 +11,9 @@
     <dubbo:registry address="N/A"/>
 
     <!--注册业务接口实现类，它是真正的服务提供者-->
-    <bean id="someService" class="cn.eleven.dubbo.SomeServiceImpl"/>
+    <bean id="someService" class="cn.eleven.provider.SomeServiceImpl"/>
 
-    <!--服务暴露-->
-    <dubbo:service interface="cn.eleven.dubbo.SomeService"
+    <!--对外暴露的服务-->
+    <dubbo:service interface="cn.eleven.api.SomeService"
                    ref="someService"/>
 </beans>

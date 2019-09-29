@@ -3,14 +3,19 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
+
     <!--指定当前工程在管控平台中的名称-->
-    <dubbo:application name="01-consumer"/>
+    <dubbo:application name="01-provider-2"/>
 
-    <!--指定注册中心：不使用注册中心-->
-    <dubbo:registry address="N/A"/>
+    <!--指定注册中心,这里不使用注册中心-->
+    <dubbo:registry address="N/A" />
 
-    <!--直连式连接到提供者，指定url-->
-    <dubbo:reference id="someService"
-                     interface="cn.eleven.api.SomeService"
-                     url="dubbo://localhost:20880"/>
+    <!--注册业务接口实现类，它是真正的服务提供者-->
+    <bean id="someService" class="SomeServiceImpl"/>
+
+    <!--对外暴露的服务-->
+    <dubbo:service interface="cn.eleven.api.SomeService"
+                   ref="someService"/>
+
+
 </beans>

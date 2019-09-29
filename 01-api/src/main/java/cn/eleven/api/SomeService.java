@@ -1,4 +1,4 @@
-package cn.eleven.dubbo;
+package cn.eleven.api;
 
 /**
  * 业务接口

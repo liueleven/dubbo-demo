@@ -1,6 +1,7 @@
-package cn.eleven.dubbo;
+package cn.eleven.consumer;
 
 
+import cn.eleven.api.SomeService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
