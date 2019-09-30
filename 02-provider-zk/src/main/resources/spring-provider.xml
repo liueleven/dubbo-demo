@@ -5,13 +5,13 @@
 
 
     <!--指定当前工程在管控平台中的名称-->
-    <dubbo:application name="01-provider"/>
+    <dubbo:application name="02-provider-zk"/>
 
-    <!--指定注册中心,这里不使用注册中心-->
-    <dubbo:registry address="N/A"/>
+    <!--指定注册中心：使用zk作为注册中心，需要本地启动zk-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
     <!--注册业务接口实现类，它是真正的服务提供者-->
-    <bean id="someService" class="cn.eleven.SomeServiceImpl"/>
+    <bean id="someService" class="cn.eleven.provider.SomeServiceImpl"/>
 
     <!--对外暴露的服务-->
     <dubbo:service interface="cn.eleven.api.SomeService"
