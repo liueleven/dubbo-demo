@@ -1,6 +1,5 @@
 package cn.eleven.consumer;
 
-import cn.eleven.consumer.UserService;
 
 /**
  * @description: 自定义返回值，类名是接口名+Mock结尾，并且在同一个包下，才可以
