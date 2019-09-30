@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+
+    <!--指定当前工程在管控平台中的名称-->
+    <dubbo:application name="08-provider-zk01"/>
+
+    <!--指定注册中心：使用zk作为注册中心，需要本地启动zk-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+
+    <!-- 指定协议 -->
+    <dubbo:protocol name="dubbo" port="20881"/>
+
+    <!--注册业务接口实现类，它是真正的服务提供者-->
+    <bean id="someService" class="cn.eleven.provider.SomeServiceImpl"/>
+
+    <!--对外暴露的服务-->
+    <dubbo:service interface="cn.eleven.api.SomeService"
+                   ref="someService"/>
+</beans>
