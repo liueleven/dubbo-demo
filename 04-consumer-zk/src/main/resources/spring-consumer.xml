@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--指定当前工程在管控平台中的名称-->
+    <dubbo:application name="02-consumer-zk">
+        <!-- qos.port 端口冲突问题也可以在这里设置-->
+        <dubbo:parameter key="qos.port" value="33334"/>
+        <!--如果是在idea中可以在vm中添加 -Ddubbo.application.qos.port=33334-->
+        <!--还可以在dubbo.properties配置文件中添加 dubbo.application.qos.port=33334-->
+    </dubbo:application>
+
+    <!--指定注册中心：使用zk作为注册中心，需要本地启动zk-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+
+    <!-- 关闭服务检查，消费者也可能是提供者 -->
+    <dubbo:reference id="someService" check="false"
+                     interface="cn.eleven.api.SomeService"/>
+</beans>
