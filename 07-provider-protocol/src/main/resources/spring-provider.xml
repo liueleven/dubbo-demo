@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+
+    <!--指定当前工程在管控平台中的名称-->
+    <dubbo:application name="07-provider-protocol"/>
+
+    <!--指定注册中心：使用zk作为注册中心，需要本地启动zk-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+
+    <!-- 声明要使用的协议 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:protocol name="rmi" port="1099"/>
+
+    <!--注册业务接口实现类，它是真正的服务提供者-->
+    <bean id="oldService" class="cn.eleven.version.OldServiceImpl"/>
+    <bean id="newService" class="cn.eleven.version.NewServiceImpl"/>
+
+    <!--对外暴露的服务，添加版本控制-->
+    <!-- protocol 消费者要消费该服务使用的协议-->
+    <!-- 根据不同的场景使用不同的协议，具体参考官网：https://dubbo.apache.org/zh-cn/docs/user/references/protocol/introduction.html -->
+
+    <dubbo:service interface="cn.eleven.api.SomeService"
+                   ref="oldService" version="0.0.1"
+                   protocol="dubbo"/>
+    <dubbo:service interface="cn.eleven.api.SomeService"
+                   ref="newService" version="0.0.2"
+                   protocol="rmi"/>
+</beans>
