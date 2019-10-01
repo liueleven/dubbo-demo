@@ -9,6 +9,7 @@
 7. 06-consumer-group，06-consumer-group 分组功能
 8. 07-consumer-protocol，07-provider-protocol 指定协议
 9. 08-provider-zk01，08-provider-zk02，08-provider-zk03，08-consumer-load-balance 负载均衡演示
-10.09-provider-tolerance 容错重试
-11.10-consumer-mocknull 演示降级，值返回null；10-consumer-mockclass演示降级，值返回自定义内容
-12.11-provider-timeout,11-consumer-timeout超时机制，消费者配置优先级高于生产者
+10. 09-provider-tolerance 容错重试
+11. 10-consumer-mocknull 演示降级，值返回null；10-consumer-mockclass演示降级，值返回自定义内容
+12. 11-provider-timeout,11-consumer-timeout超时机制，消费者配置优先级高于生产者
+13. 12-limit 服务限流
