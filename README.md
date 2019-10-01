@@ -15,4 +15,5 @@
 13. 12-limit 服务限流
 14. 13-consumer-cache 声明式缓存，将结果缓存在消费者端
 15. 14-consumer-registers，14-consumer-registers 使用多注册中心
-16. 15-provider-async，15-consumer-async 使用Future异步；15-provider-async02，15-consumer-async02 使用CompletableFuture异步
+16. 15-provider-async，15-consumer-async 消费者使用Future异步；15-provider-async02，15-consumer-async02 消费者使用CompletableFuture异步
+17. 16-provider-async 提供者使用异步来提高响应
