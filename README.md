@@ -13,3 +13,4 @@
 11. 10-consumer-mocknull 演示降级，值返回null；10-consumer-mockclass演示降级，值返回自定义内容
 12. 11-provider-timeout,11-consumer-timeout超时机制，消费者配置优先级高于生产者
 13. 12-limit 服务限流
+14. 13-consumer-cache 声明式缓存，将结果缓存在消费者端
