@@ -14,3 +14,4 @@
 12. 11-provider-timeout,11-consumer-timeout超时机制，消费者配置优先级高于生产者
 13. 12-limit 服务限流
 14. 13-consumer-cache 声明式缓存，将结果缓存在消费者端
+15. 14-consumer-registers，14-consumer-registers 使用多注册中心

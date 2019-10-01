@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+
+    <!--指定当前工程在管控平台中的名称-->
+    <dubbo:application name="14-provider-registers"/>
+
+    <!--指定注册中心：使用zk作为注册中心，需要本地启动zk，配置多注册中心-->
+    <dubbo:registry id="bjCenter" address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry id="shCenter" address="zookeeper://127.0.0.1:2182"/>
+    <dubbo:registry id="gdCenter" address="zookeeper://127.0.0.1:2183"/>
+    <dubbo:registry id="cqCenter" address="zookeeper://127.0.0.1:2184"/>
+
+    <!--注册业务接口实现类，它是真正的服务提供者-->
+    <bean id="weiXinService" class="cn.eleven.group.WeiXinServiceImpl"/>
+    <bean id="aliPayService" class="cn.eleven.group.AliPayServiceImpl"/>
+
+    <!--不同的服务，使用不同的注册中心，或注册到多个注册中心-->
+    <dubbo:service interface="cn.eleven.api.SomeService"
+                   ref="weiXinService" group="pay.weiXin" register="bjCenter,shCenter"/>
+    <dubbo:service interface="cn.eleven.api.SomeService"
+                   ref="aliPayService" group="pay.ali" register="gdCenter,cqCenter"/>
+</beans>
